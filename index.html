@@ -4,174 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalendarz Adwentowy</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-
-        h1 {
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        #calendar {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 10px;
-            justify-content: center;
-            margin: 20px auto;
-            max-width: 600px;
-        }
-
-        .day {
-            width: 100px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #8b5e3c;
-            color: #fff;
-            font-size: 20px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
-        }
-
-        .day:hover {
-            background: #d4a373;
-            transform: scale(1.1);
-        }
-
-        .task {
-            display: none;
-            font-size: 16px;
-            color: #333;
-            margin-top: 10px;
-            background: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .day.active .task {
-            display: block;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Kalendarz Adwentowy 🎄</h1>
+    <header>
+        <h1>🎁✨ Kalendarz Adwentowy z Zadaniami Matematycznymi 🎄</h1>
+        <p>Każdego dnia odkryj nowe matematyczne wyzwanie!</p>
+    </header>
+
     <div id="calendar">
-        <!-- 24 zakładki -->
-        <div class="day" onclick="toggleTask(1)">
-            1
-            <div class="task" id="task-1">Treść zadania 1: Rozwiąż równanie \(x + 5 = 10\).</div>
-        </div>
-        <div class="day" onclick="toggleTask(2)">
-            2
-            <div class="task" id="task-2">Treść zadania 2: Oblicz \(2 + 3 \times 4\).</div>
-        </div>
-        <div class="day" onclick="toggleTask(3)">
-            3
-            <div class="task" id="task-3">Treść zadania 3: Ile to 25% z 80?</div>
-        </div>
-        <div class="day" onclick="toggleTask(4)">
-            4
-            <div class="task" id="task-4">Treść zadania 4: Znajdź obwód kwadratu o boku 6 cm.</div>
-        </div>
-        <div class="day" onclick="toggleTask(5)">
-            5
-            <div class="task" id="task-5">Treść zadania 5: Rozwiąż równanie \(3x = 9\).</div>
-        </div>
-        <div class="day" onclick="toggleTask(6)">
-            6
-            <div class="task" id="task-6">Treść zadania 6: Ile dni ma rok przestępny?</div>
-        </div>
-        <div class="day" onclick="toggleTask(7)">
-            7
-            <div class="task" id="task-7">Treść zadania 7: Znajdź pole trójkąta o podstawie 10 cm i wysokości 5 cm.</div>
-        </div>
-        <div class="day" onclick="toggleTask(8)">
-            8
-            <div class="task" id="task-8">Treść zadania 8: Podaj wynik \(10^2\).</div>
-        </div>
-        <div class="day" onclick="toggleTask(9)">
-            9
-            <div class="task" id="task-9">Treść zadania 9: Oblicz sumę 100 + 250.</div>
-        </div>
-        <div class="day" onclick="toggleTask(10)">
-            10
-            <div class="task" id="task-10">Treść zadania 10: Znajdź 1/3 z liczby 90.</div>
-        </div>
-        <div class="day" onclick="toggleTask(11)">
-            11
-            <div class="task" id="task-11">Treść zadania 11: Oblicz pierwiastek kwadratowy z 49.</div>
-        </div>
-        <div class="day" onclick="toggleTask(12)">
-            12
-            <div class="task" id="task-12">Treść zadania 12: Ile to \(5!\) (silnia)?</div>
-        </div>
-        <div class="day" onclick="toggleTask(13)">
-            13
-            <div class="task" id="task-13">Treść zadania 13: Jaka jest suma kątów w trójkącie?</div>
-        </div>
-        <div class="day" onclick="toggleTask(14)">
-            14
-            <div class="task" id="task-14">Treść zadania 14: Rozwiąż równanie \(x^2 = 16\).</div>
-        </div>
-        <div class="day" onclick="toggleTask(15)">
-            15
-            <div class="task" id="task-15">Treść zadania 15: Ile minut ma godzina?</div>
-        </div>
-        <div class="day" onclick="toggleTask(16)">
-            16
-            <div class="task" id="task-16">Treść zadania 16: Ile to \(10 - 3 \times 2\)?</div>
-        </div>
-        <div class="day" onclick="toggleTask(17)">
-            17
-            <div class="task" id="task-17">Treść zadania 17: Znajdź pole prostokąta o bokach 8 cm i 12 cm.</div>
-        </div>
-        <div class="day" onclick="toggleTask(18)">
-            18
-            <div class="task" id="task-18">Treść zadania 18: Ile dni ma luty w roku przestępnym?</div>
-        </div>
-        <div class="day" onclick="toggleTask(19)">
-            19
-            <div class="task" id="task-19">Treść zadania 19: Podaj wynik \(3^3\).</div>
-        </div>
-        <div class="day" onclick="toggleTask(20)">
-            20
-            <div class="task" id="task-20">Treść zadania 20: Oblicz sumę 75 + 125.</div>
-        </div>
-        <div class="day" onclick="toggleTask(21)">
-            21
-            <div class="task" id="task-21">Treść zadania 21: Ile to 100/4?</div>
-        </div>
-        <div class="day" onclick="toggleTask(22)">
-            22
-            <div class="task" id="task-22">Treść zadania 22: Znajdź objętość sześcianu o krawędzi 3 cm.</div>
-        </div>
-        <div class="day" onclick="toggleTask(23)">
-            23
-            <div class="task" id="task-23">Treść zadania 23: Ile to \(15 \times 15\)?</div>
-        </div>
-        <div class="day" onclick="toggleTask(24)">
-            24
-            <div class="task" id="task-24">Treść zadania 24: Znajdź \(7 + 8 \times 2\).</div>
-        </div>
+        <!-- Miejsce na zakładki dla każdego dnia -->
+        <script>
+            for (let i = 1; i <= 24; i++) {
+                document.write(`
+                    <div class="day" id="day-${i}">
+                        <span>🎅 ${i} 🎁</span>
+                        <div class="content hidden">
+                            <h2>🎄 Zadanie ${i} 🎄</h2>
+                            <p>Tu znajdziesz treść zadania:</p>
+                            <p id="task-${i}">Twoje zadanie matematyczne pojawi się tutaj.</p>
+                        </div>
+                    </div>
+                `);
+            }
+        </script>
     </div>
 
-    <script>
-        function toggleTask(day) {
-            const task = document.getElementById(`task-${day}`);
-            task.style.display = task.style.display === "block" ? "none" : "block";
-        }
-    </script>
-</body>
-</html>
+    <div id="countdown">
+        <h2 id="countdown-text">Odliczanie do następnego zadania:</h2>
+        <p id="timer">00:00:00</p>
+    </div>
 
+    <audio id="background-music" autoplay loop>
+        <source src="https://www.youtube.com/watch?v=f61Q4tGLeCQ&t=64s" type="audio/mp3">
+    </audio>
