@@ -12,23 +12,36 @@
         <p>Każdego dnia odkryj nowe matematyczne wyzwanie!</p>
     </header>
 
-    <div id="calendar">
-        <!-- Miejsce na zakładki dla każdego dnia -->
-        <script>
-            for (let i = 1; i <= 24; i++) {
-                document.write(`
-                    <div class="day" id="day-${i}">
-                        <span>🎅 ${i} 🎁</span>
-                        <div class="content hidden">
-                            <h2>🎄 Zadanie ${i} 🎄</h2>
-                            <p>Tu znajdziesz treść zadania:</p>
-                            <p id="task-${i}">Oblicz.</p>
-                        </div>
+<div id="calendar">
+    <!-- Miejsce na zakładki dla każdego dnia -->
+    <script>
+        // Tablica z poleceniami matematycznymi
+        const tasks = [
+            "Oblicz 5 + 3", "Rozwiąż równanie x + 2 = 6", "Ile wynosi 3 * 4?",
+            "Jaki jest pierwiastek kwadratowy z 49?", "Oblicz 15 - 7", "Ile wynosi 9 / 3?",
+            "Dodaj 12 i 8", "Rozwiąż równanie 3x = 12", "Oblicz 7^2",
+            "Oblicz pole prostokąta o bokach 5 i 7", "Ile wynosi 100 - 35?", "Podaj liczbę pierwszą mniejszą od 20",
+            "Rozwiąż równanie x - 5 = 10", "Jaki jest wynik 2 * (3 + 4)?", "Ile wynosi obwód koła o promieniu 7?",
+            "Dodaj 25 i 75", "Ile wynosi 8 * 8?", "Rozwiąż równanie 4x - 3 = 9",
+            "Ile wynosi 81 / 9?", "Oblicz sumę kątów trójkąta", "Jaka jest różnica 60 - 45?",
+            "Rozwiąż równanie 2x + 3 = 11", "Ile wynosi 11 * 11?", "Oblicz 1000 - 123"
+        ];
+
+        for (let i = 1; i <= 24; i++) {
+            document.write(`
+                <div class="day" id="day-${i}">
+                    <span>🎅 ${i} 🎁</span>
+                    <div class="content hidden">
+                        <h2>🎄 Zadanie ${i} 🎄</h2>
+                        <p>Tu znajdziesz treść zadania:</p>
+                        <p id="task-${i}">${tasks[i - 1]}</p>
                     </div>
-                `);
-            }
-        </script>
-    </div>
+                </div>
+            `);
+        }
+    </script>
+</div>
+
 
     <div id="countdown">
         <h2 id="countdown-text">Odliczanie do następnego zadania:</h2>
