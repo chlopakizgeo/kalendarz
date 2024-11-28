@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">--
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalendarz Adwentowy</title>
     <link rel="stylesheet" href="styles.css">
@@ -15,18 +15,14 @@
     <div id="calendar">
         <!-- Miejsce na zakładki dla każdego dnia -->
         <script>
-            const today = new Date();
-            const currentDay = today.getDate(); // Aktualny dzień
-
             for (let i = 1; i <= 24; i++) {
-                const locked = i > currentDay ? 'hidden' : ''; // Ukryj, jeśli dzień jeszcze nie nadszedł
                 document.write(`
                     <div class="day" id="day-${i}">
                         <span>🎅 ${i} 🎁</span>
-                        <div class="content ${locked}">
+                        <div class="content hidden">
                             <h2>🎄 Zadanie ${i} 🎄</h2>
                             <p>Tu znajdziesz treść zadania:</p>
-                            <p id="task-${i}">Treść zadania</p>
+                            <p id="task-${i}">Twoje zadanie matematyczne pojawi się tutaj.</p>
                         </div>
                     </div>
                 `);
@@ -40,39 +36,9 @@
     </div>
 
     <audio id="background-music" autoplay loop>
-        <source src="https://www.youtube.com/watch?v=vh8-iPsgmno" type="audio/mp3">
-        Twoja przeglądarka nie obsługuje odtwarzania muzyki.
+        <source src="https://www.youtube.com/watch?v=f61Q4tGLeCQ&t=64s" type="audio/mp3">
     </audio>
 
-    <script>
-        // Odliczanie do następnego dnia
-        function updateCountdown() {
-            const now = new Date();
-            const nextDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-            const timeLeft = nextDay - now;
-
-            const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
-            const seconds = Math.floor((timeLeft / 1000) % 60);
-
-            document.getElementById("timer").textContent =
-                `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-        }
-
-        setInterval(updateCountdown, 1000);
-
-        // Odblokowywanie treści dnia
-        window.onload = function () {
-            const today = new Date().getDate();
-            for (let i = 1; i <= 24; i++) {
-                const dayElement = document.getElementById(`day-${i}`);
-                if (i <= today) {
-                    const content = dayElement.querySelector(".content");
-                    content.classList.remove("hidden");
-                }
-            }
-        };
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
