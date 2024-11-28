@@ -12,23 +12,35 @@
         <p>Każdego dnia odkryj nowe matematyczne wyzwanie!</p>
     </header>
 
+   
     <div id="calendar">
-        <!-- Miejsce na zakładki dla każdego dnia -->
-        <script>
-            for (let i = 1; i <= 24; i++) {
-                document.write(`
-                    <div class="day" id="day-${i}">
-                        <span>🎅 ${i} 🎁</span>
-                        <div class="content hidden">
-                            <h2>🎄 Zadanie ${i} 🎄</h2>
-                            <p>Tu znajdziesz treść zadania:</p>
-                            <p id="task-${i}">Twoje zadanie matematyczne pojawi się tutaj.</p>
-                        </div>
-                    </div>
-                `);
-            }
-        </script>
+        <!-- Zakładki -->
+        <div class="day" onclick="showTask(1)">1</div>
+        <div class="day" onclick="showTask(2)">2</div>
+        <div class="day" onclick="showTask(3)">3</div>
+        <div class="day" onclick="showTask(4)">4</div>
+        <div class="day" onclick="showTask(5)">5</div>
+        <div class="day" onclick="showTask(6)">6</div>
+        <div class="day" onclick="showTask(7)">7</div>
+        <div class="day" onclick="showTask(8)">8</div>
+        <div class="day" onclick="showTask(9)">9</div>
+        <div class="day" onclick="showTask(10)">10</div>
+        <div class="day" onclick="showTask(11)">11</div>
+        <div class="day" onclick="showTask(12)">12</div>
+        <div class="day" onclick="showTask(13)">13</div>
+        <div class="day" onclick="showTask(14)">14</div>
+        <div class="day" onclick="showTask(15)">15</div>
+        <div class="day" onclick="showTask(16)">16</div>
+        <div class="day" onclick="showTask(17)">17</div>
+        <div class="day" onclick="showTask(18)">18</div>
+        <div class="day" onclick="showTask(19)">19</div>
+        <div class="day" onclick="showTask(20)">20</div>
+        <div class="day" onclick="showTask(21)">21</div>
+        <div class="day" onclick="showTask(22)">22</div>
+        <div class="day" onclick="showTask(23)">23</div>
+        <div class="day" onclick="showTask(24)">24</div>
     </div>
+
 
     <div id="countdown">
         <h2 id="countdown-text">Odliczanie do następnego zadania:</h2>
