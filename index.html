@@ -12,24 +12,27 @@
         <p>Każdego dnia odkryj nowe matematyczne wyzwanie!</p>
     </header>
 
-     <div id="calendar">
+    <div id="calendar">
         <!-- Miejsce na zakładki dla każdego dnia -->
         <script>
+            const today = new Date();
+            const currentDay = today.getDate(); // Aktualny dzień
+
             for (let i = 1; i <= 24; i++) {
+                const locked = i > currentDay ? 'hidden' : ''; // Ukryj, jeśli dzień jeszcze nie nadszedł
                 document.write(`
                     <div class="day" id="day-${i}">
                         <span>🎅 ${i} 🎁</span>
-                        <div class="content hidden">
+                        <div class="content ${locked}">
                             <h2>🎄 Zadanie ${i} 🎄</h2>
                             <p>Tu znajdziesz treść zadania:</p>
-                            <p id="task-${i}">Twoje zadanie matematyczne pojawi się tutaj.</p>
+                            <p id="task-${i}">Treść zadania</p>
                         </div>
                     </div>
                 `);
             }
         </script>
     </div>
-
 
     <div id="countdown">
         <h2 id="countdown-text">Odliczanie do następnego zadania:</h2>
@@ -41,6 +44,35 @@
         Twoja przeglądarka nie obsługuje odtwarzania muzyki.
     </audio>
 
-    <script src="script.js"></script>
+    <script>
+        // Odliczanie do następnego dnia
+        function updateCountdown() {
+            const now = new Date();
+            const nextDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+            const timeLeft = nextDay - now;
+
+            const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+            const seconds = Math.floor((timeLeft / 1000) % 60);
+
+            document.getElementById("timer").textContent =
+                `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+        }
+
+        setInterval(updateCountdown, 1000);
+
+        // Odblokowywanie treści dnia
+        window.onload = function () {
+            const today = new Date().getDate();
+            for (let i = 1; i <= 24; i++) {
+                const dayElement = document.getElementById(`day-${i}`);
+                if (i <= today) {
+                    const content = dayElement.querySelector(".content");
+                    content.classList.remove("hidden");
+                }
+            }
+        };
+    </script>
+
 </body>
 </html>
