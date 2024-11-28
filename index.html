@@ -12,102 +12,23 @@
         <p>Każdego dnia odkryj nowe matematyczne wyzwanie!</p>
     </header>
 
-   
-   
-  
-<div id="calendar">
-    <!-- Miejsce na zakładki dla każdego dnia -->
-    <script>
-        for (let i = 1; i <= 24; i++) {
-            document.write(`
-                <div class="day" id="day-${i}">
-                    <span>🎅 ${i} 🎁</span>
-                    <div class="content hidden">
-                        <h2>🎄 Zadanie ${i} 🎄</h2>
-                        <p>Tu znajdziesz treść zadania:</p>
-                        <p id="task-${i}"></p>
+     <div id="calendar">
+        <!-- Miejsce na zakładki dla każdego dnia -->
+        <script>
+            for (let i = 1; i <= 24; i++) {
+                document.write(`
+                    <div class="day" id="day-${i}">
+                        <span>🎅 ${i} 🎁</span>
+                        <div class="content hidden">
+                            <h2>🎄 Zadanie ${i} 🎄</h2>
+                            <p>Tu znajdziesz treść zadania:</p>
+                            <p id="task-${i}">Twoje zadanie matematyczne pojawi się tutaj.</p>
+                        </div>
                     </div>
-                </div>
-            `);
-        }
-    </script>
-</div>
-
-<!-- Miejsce na treści zadań -->
-<div id="tasks">
-    <div id="task-content-1" class="task-content hidden">
-        <p>oblicz pole kwadratu o bokach 2</p>
+                `);
+            }
+        </script>
     </div>
-    <div id="task-content-2" class="task-content hidden">
-        <p>Treść zadania 2</p>
-    </div>
-    <div id="task-content-3" class="task-content hidden">
-        <p>Treść zadania 3</p>
-    </div>
-    <div id="task-content-4" class="task-content hidden">
-        <p>Treść zadania 4</p>
-    </div>
-    <div id="task-content-5" class="task-content hidden">
-        <p>Treść zadania 5</p>
-    </div>
-    <div id="task-content-6" class="task-content hidden">
-        <p>Treść zadania 6</p>
-    </div>
-    <div id="task-content-7" class="task-content hidden">
-        <p>Treść zadania 7</p>
-    </div>
-    <div id="task-content-8" class="task-content hidden">
-        <p>Treść zadania 8</p>
-    </div>
-    <div id="task-content-9" class="task-content hidden">
-        <p>Treść zadania 9</p>
-    </div>
-    <div id="task-content-10" class="task-content hidden">
-        <p>Treść zadania 10</p>
-    </div>
-    <div id="task-content-11" class="task-content hidden">
-        <p>Treść zadania 11</p>
-    </div>
-    <div id="task-content-12" class="task-content hidden">
-        <p>Treść zadania 12</p>
-    </div>
-    <div id="task-content-13" class="task-content hidden">
-        <p>Treść zadania 13</p>
-    </div>
-    <div id="task-content-14" class="task-content hidden">
-        <p>Treść zadania 14</p>
-    </div>
-    <div id="task-content-15" class="task-content hidden">
-        <p>Treść zadania 15</p>
-    </div>
-    <div id="task-content-16" class="task-content hidden">
-        <p>Treść zadania 16</p>
-    </div>
-    <div id="task-content-17" class="task-content hidden">
-        <p>Treść zadania 17</p>
-    </div>
-    <div id="task-content-18" class="task-content hidden">
-        <p>Treść zadania 18</p>
-    </div>
-    <div id="task-content-19" class="task-content hidden">
-        <p>Treść zadania 19</p>
-    </div>
-    <div id="task-content-20" class="task-content hidden">
-        <p>Treść zadania 20</p>
-    </div>
-    <div id="task-content-21" class="task-content hidden">
-        <p>Treść zadania 21</p>
-    </div>
-    <div id="task-content-22" class="task-content hidden">
-        <p>Treść zadania 22</p>
-    </div>
-    <div id="task-content-23" class="task-content hidden">
-        <p>Treść zadania 23</p>
-    </div>
-    <div id="task-content-24" class="task-content hidden">
-        <p>Treść zadania 24</p>
-    </div>
-</div>
 
 
     <div id="countdown">
