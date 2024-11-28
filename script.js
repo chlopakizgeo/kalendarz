@@ -1,22 +1,27 @@
-const startDate = new Date("2024-12-01T00:00:00");
-const endDate = new Date("2024-12-24T23:59:59");
+const startDate = new Date("2024-12-01T00:00:00"); // Data rozpoczęcia
+const endDate = new Date("2024-12-24T23:59:59");  // Data zakończenia
 
 // Funkcja do odblokowywania dni
 function unlockDays() {
-    const today = new Date();
-    const dayOfMonth = today.getDate();
+    const now = new Date();
+    const elapsedDays = Math.floor((now - startDate) / (1000 * 60 * 60 * 24)) + 1;
 
-    for (let i = 1; i <= dayOfMonth && i <= 24; i++) {
-        const day = document.getElementById(`day-${i}`);
-        day.classList.add('open');
-        day.onclick = () => day.querySelector('.content').classList.toggle('hidden');
+    for (let i = 1; i <= 24; i++) {
+        const dayElement = document.getElementById(`day-${i}`);
+        if (i <= elapsedDays) {
+            dayElement.classList.add('open');
+            dayElement.onclick = () => {
+                const content = dayElement.querySelector('.content');
+                content.classList.toggle('hidden');
+            };
+        }
     }
 }
 
 // Odliczanie czasu do odblokowania następnego zadania
 function updateCountdown() {
     const now = new Date();
-    const nextDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+    const nextDay = new Date(startDate.getTime() + Math.floor((now - startDate) / (1000 * 60 * 60 * 24) + 1) * 24 * 60 * 60 * 1000);
     const timeRemaining = nextDay - now;
 
     if (timeRemaining > 0) {
