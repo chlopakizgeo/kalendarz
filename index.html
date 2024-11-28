@@ -19,11 +19,6 @@
                 document.write(`
                     <div class="day" id="day-${i}">
                         <span>🎅 ${i} 🎁</span>
-                        <div class="content hidden">
-                            <h2>🎄 Zadanie ${i} 🎄</h2>
-                            <p>Tu znajdziesz treść zadania:</p>
-                            <p id="task-${i}">Treść zadania ${i} <!-- Wprowadź treść zadania tutaj --> </p>
-                        </div>
                     </div>
                 `);
             }
@@ -33,6 +28,14 @@
     <div id="countdown">
         <h2 id="countdown-text">Odliczanie do następnego zadania:</h2>
         <p id="timer">00:00:00</p>
+    </div>
+
+    <div id="task-popup" class="hidden">
+        <div id="task-content">
+            <button id="close-popup">❌ Zamknij</button>
+            <h2 id="task-title">🎄 Zadanie 🎄</h2>
+            <p id="task-text">Treść zadania</p>
+        </div>
     </div>
 
     <audio id="background-music" autoplay loop>
