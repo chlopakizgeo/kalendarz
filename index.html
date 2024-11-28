@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalendarz Adwentowy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>🎁✨ Kalendarz Adwentowy z Zadaniami Matematycznymi 🎄</h1>
+        <p>Każdego dnia odkryj nowe matematyczne wyzwanie!</p>
+    </header>
+
+    <div id="calendar">
+        <!-- Miejsce na zakładki dla każdego dnia -->
+        <script>
+            for (let i = 1; i <= 24; i++) {
+                document.write(`
+                    <div class="day" id="day-${i}">
+                        <span>🎅 ${i} 🎁</span>
+                        <div class="content hidden">
+                            <h2>🎄 Zadanie ${i} 🎄</h2>
+                            <p>Tu znajdziesz treść zadania:</p>
+                            <p id="task-${i}">Twoje zadanie matematyczne pojawi się tutaj.</p>
+                        </div>
+                    </div>
+                `);
+            }
+        </script>
+    </div>
+
+    <div id="countdown">
+        <h2 id="countdown-text">Odliczanie do następnego zadania:</h2>
+        <p id="timer">00:00:00</p>
+    </div>
+
+    <audio id="background-music" autoplay loop>
+        <source src="https://www.youtube.com/watch?v=vh8-iPsgmno" type="audio/mp3">
+        Twoja przeglądarka nie obsługuje odtwarzania muzyki.
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
