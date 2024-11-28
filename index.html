@@ -13,9 +13,11 @@
     </header>
 
    
+   
     <div id="calendar">
-        <!-- Zakładki -->
-        <div class="day" onclick="showTask(1)">1</div>
+        <!-- Miejsce na zakładki dla każdego dnia -->
+        <script>
+           <div class="day" onclick="showTask(1)">1</div>
         <div class="day" onclick="showTask(2)">2</div>
         <div class="day" onclick="showTask(3)">3</div>
         <div class="day" onclick="showTask(4)">4</div>
@@ -38,7 +40,19 @@
         <div class="day" onclick="showTask(21)">21</div>
         <div class="day" onclick="showTask(22)">22</div>
         <div class="day" onclick="showTask(23)">23</div>
-        <div class="day" onclick="showTask(24)">24</div>
+        <div class="day" onclick="showTask(24)">24</div> {
+                document.write(`
+                    <div class="day" id="day-${i}">
+                        <span>🎅 ${i} 🎁</span>
+                        <div class="content hidden">
+                            <h2>🎄 Zadanie ${i} 🎄</h2>
+                            <p>Tu znajdziesz treść zadania:</p>
+                            <p id="task-${i}">Twoje zadanie matematyczne pojawi się tutaj.</p>
+                        </div>
+                    </div>
+                `);
+            }
+        </script>
     </div>
 
 
