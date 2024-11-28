@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">--
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalendarz Adwentowy</title>
     <link rel="stylesheet" href="styles.css">
@@ -13,7 +13,7 @@
     </header>
 
     <div id="calendar">
-        <!-- Miejsce na zakładki dla każdego dnia -->
+        <!-- Miejsca na zakładki dla każdego dnia -->
         <script>
             for (let i = 1; i <= 24; i++) {
                 document.write(`
@@ -22,7 +22,7 @@
                         <div class="content hidden">
                             <h2>🎄 Zadanie ${i} 🎄</h2>
                             <p>Tu znajdziesz treść zadania:</p>
-                            <p id="task-${i}">Twoje zadanie matematyczne pojawi się tutaj.</p>
+                            <p id="task-${i}">Treść zadania ${i} <!-- Wprowadź treść zadania tutaj --> </p>
                         </div>
                     </div>
                 `);
