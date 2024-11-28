@@ -4,104 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalendarz Adwentowy</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-            color: #333;
-        }
-
-        header {
-            margin-bottom: 20px;
-        }
-
-        h1, p {
-            color: #fff;
-        }
-
-        #calendar {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 10px;
-            justify-content: center;
-            margin: 0 auto;
-            max-width: 600px;
-        }
-
-        .day {
-            width: 100px;
-            height: 100px;
-            background: #8b5e3c;
-            color: #fff;
-            font-size: 20px;
-            font-weight: bold;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
-        }
-
-        .day:hover {
-            background: #d4a373;
-            transform: scale(1.1);
-        }
-
-        #task-modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            width: 80%;
-            max-width: 400px;
-            text-align: center;
-            z-index: 1000;
-        }
-
-        #task-modal h2 {
-            margin-bottom: 15px;
-        }
-
-        #task-modal p {
-            margin: 10px 0;
-        }
-
-        #close-modal {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: #8b5e3c;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        #close-modal:hover {
-            background: #d4a373;
-        }
-
-        #overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -110,81 +13,28 @@
     </header>
 
     <div id="calendar">
-        <!-- Zakładki -->
-        <div class="day" onclick="showTask(1)">1</div>
-        <div class="day" onclick="showTask(2)">2</div>
-        <div class="day" onclick="showTask(3)">3</div>
-        <div class="day" onclick="showTask(4)">4</div>
-        <div class="day" onclick="showTask(5)">5</div>
-        <div class="day" onclick="showTask(6)">6</div>
-        <div class="day" onclick="showTask(7)">7</div>
-        <div class="day" onclick="showTask(8)">8</div>
-        <div class="day" onclick="showTask(9)">9</div>
-        <div class="day" onclick="showTask(10)">10</div>
-        <div class="day" onclick="showTask(11)">11</div>
-        <div class="day" onclick="showTask(12)">12</div>
-        <div class="day" onclick="showTask(13)">13</div>
-        <div class="day" onclick="showTask(14)">14</div>
-        <div class="day" onclick="showTask(15)">15</div>
-        <div class="day" onclick="showTask(16)">16</div>
-        <div class="day" onclick="showTask(17)">17</div>
-        <div class="day" onclick="showTask(18)">18</div>
-        <div class="day" onclick="showTask(19)">19</div>
-        <div class="day" onclick="showTask(20)">20</div>
-        <div class="day" onclick="showTask(21)">21</div>
-        <div class="day" onclick="showTask(22)">22</div>
-        <div class="day" onclick="showTask(23)">23</div>
-        <div class="day" onclick="showTask(24)">24</div>
+        <!-- Miejsce na zakładki dla każdego dnia -->
+        <script>
+            for (let i = 1; i <= 24; i++) {
+                document.write(`
+                    <div class="day" id="day-${i}">
+                        <span>🎅 ${i} 🎁</span>
+                        <div class="content hidden">
+                            <h2>🎄 Zadanie ${i} 🎄</h2>
+                            <p>Tu znajdziesz treść zadania:</p>
+                            <p id="task-${i}">Twoje zadanie matematyczne pojawi się tutaj.</p>
+                        </div>
+                    </div>
+                `);
+            }
+        </script>
     </div>
 
-    <!-- Modal do wyświetlania treści zadania -->
-    <div id="overlay"></div>
-    <div id="task-modal">
-        <h2 id="task-title">🎄 Zadanie 🎄</h2>
-        <p id="task-content">Tu znajdziesz treść zadania.</p>
-        <button id="close-modal" onclick="closeTask()">Zamknij</button>
+    <div id="countdown">
+        <h2 id="countdown-text">Odliczanie do następnego zadania:</h2>
+        <p id="timer">00:00:00</p>
     </div>
 
-    <script>
-        // Treści zadań
-        const tasks = {
-            1: "Rozwiąż równanie: 2x + 5 = 15",
-            2: "Oblicz: 3 + 4 × 2",
-            3: "Ile to 50% z liczby 120?",
-            4: "Oblicz obwód prostokąta o bokach 8 cm i 5 cm.",
-            5: "Rozwiąż równanie: 3x = 12",
-            6: "Podaj pierwiastek kwadratowy z liczby 64.",
-            7: "Oblicz pole trójkąta o podstawie 10 cm i wysokości 4 cm.",
-            8: "Ile to 5! (silnia)?",
-            9: "Znajdź sumę liczb od 1 do 10.",
-            10: "Ile to 10 × 10?",
-            11: "Podaj liczbę dni w roku przestępnym.",
-            12: "Oblicz: 20 - (3 × 5)",
-            13: "Znajdź pole kwadratu o boku 7 cm.",
-            14: "Oblicz pierwiastek kwadratowy z liczby 144.",
-            15: "Podaj wynik: 12 ÷ 4.",
-            16: "Ile to 8 × 7?",
-            17: "Znajdź obwód koła o promieniu 7 cm (π ≈ 3.14).",
-            18: "Oblicz: 100 - (20 + 30).",
-            19: "Znajdź 1/4 liczby 120.",
-            20: "Podaj wynik: 2^5.",
-            21: "Ile to 15 × 3?",
-            22: "Oblicz pole prostokąta o bokach 12 cm i 5 cm.",
-            23: "Znajdź objętość sześcianu o boku 4 cm.",
-            24: "Rozwiąż równanie: x/2 = 6."
-        };
-
-        function showTask(day) {
-            document.getElementById("task-title").innerText = `🎄 Zadanie ${day} 🎄`;
-            document.getElementById("task-content").innerText = tasks[day];
-            document.getElementById("overlay").style.display = "block";
-            document.getElementById("task-modal").style.display = "block";
-        }
-
-        function closeTask() {
-            document.getElementById("overlay").style.display = "none";
-            document.getElementById("task-modal").style.display = "none";
-        }
-    </script>
-</body>
-</html>
+    <audio id="background-music" autoplay loop>
+        <source src="https://www.youtube.com/watch?v=f61Q4tGLeCQ&t=64s" type="audio/mp3">
+    </audio>
