@@ -125,7 +125,7 @@ body::before {
     position: absolute;
     top: 0;
     left: 85%;
-    right: 85%;
+    right: 80%;
     font-size: 1.5rem;
     color: #e0fbfc;
     animation: fall linear infinite;
