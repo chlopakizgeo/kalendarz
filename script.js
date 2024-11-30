@@ -29,5 +29,25 @@ function updateCountdown() {
     }
 }
 
-init();
+// Tworzenie animowanego śniegu
+function createSnowflakes() {
+    const snowflake = document.createElement('div');
+    snowflake.classList.add('snowflake');
+    snowflake.textContent = '❄';
+    snowflake.style.left = Math.random() * 100 + 'vw';
+    snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+    document.body.appendChild(snowflake);
 
+    setTimeout(() => {
+        snowflake.remove();
+    }, 5000);
+}
+
+// Inicjalizacja
+function init() {
+    unlockDays();
+    setInterval(updateCountdown, 1000);
+    setInterval(createSnowflakes, 200);
+}
+
+init();
