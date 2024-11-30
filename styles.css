@@ -121,29 +121,3 @@ body::before {
     pointer-events: none;
     z-index: -1;
 }
-
-.snowflake {
-    position: absolute;
-    top: 0;
-    font-size: 1.5rem;
-    color: #e0fbfc;
-    animation: fall linear infinite;
-    pointer-events: none;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(100vh);
-        opacity: 0;
-    }
-}
-
-audio {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 10;
-    outline: none;
-    border: 3px solid #ff9f1c;
-    border-radius: 10px;
-}
